@@ -1,25 +1,44 @@
 import React from 'react'
-import logo from './logo.svg'
-import './App.css'
+import Home from './components/Home'
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+import reducer from './reducers'
+
+const store = createStore(reducer)
 
 function App () {
   return (
-    <div className='App'>
-      <header className='App-header'>
-        <img src={logo} className='App-logo' alt='logo' />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className='App-link'
-          href='https://reactjs.org'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <Router>
+        <nav className='navbar navbar-expand-sm'>
+          <Link to='/' className='navbar-brand'><b>Your todos</b></Link>
+          <div className='collpase nav-collapse'>
+            <ul className='navbar-nav'>
+              <li className='nav-item'>
+                <Link to='/today' className='nav-link'>Today</Link>
+              </li>
+              <li className='nav-item'>
+                <Link to='/celedar' className='nav-link'>Celedar</Link>
+              </li>
+              <li className='nav-item'>
+                <Link to='/about' className='nav-link'>About</Link>
+              </li>
+            </ul>
+          </div>
+          <div className='navbar-collapse collapse w-100 order-3 dual-collapse2'>
+            <ul className='navbar-nav ml-auto'>
+              <li className='nav-item'>
+                <a className='nav-link' href='/'>Log out</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        <div className='container'>
+          <Route exact path='/' component={Home} />
+        </div>
+      </Router>
+    </Provider>
   )
 }
 
