@@ -1,5 +1,6 @@
 import React from 'react'
 import Home from './components/Home'
+import Login from './components/Login'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
@@ -29,13 +30,14 @@ function App () {
           <div className='navbar-collapse collapse w-100 order-3 dual-collapse2'>
             <ul className='navbar-nav ml-auto'>
               <li className='nav-item'>
-                <a className='nav-link' href='/'>Log out</a>
+                <Link to='/login' className='nav-link'>Login</Link>
               </li>
             </ul>
           </div>
         </nav>
         <div className='container'>
           <Route exact path='/' component={Home} />
+          <Route exact path='/login' component={Login} />
         </div>
       </Router>
     </Provider>
