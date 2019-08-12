@@ -1,22 +1,29 @@
-import React, { useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { authWithGoogle, logout } from '../actions/auth'
+import React from 'react'
+import { useDispatch } from 'react-redux'
+import { authWithGoogle } from '../actions/auth'
 
 const Login = (props) => {
-  const messageLogin = useSelector(reducers => reducers.auth.messageLogin)
-  const messageLogout = useSelector(reducers => reducers.auth.messageLogout)
   const dispatch = useDispatch()
-
-  useEffect(() => {
-    authWithGoogle(dispatch)
-    logout(dispatch)
-  }, [dispatch])
 
   return (
     <>
       <h3 className='header'>Log in page</h3>
-      {console.log(messageLogin)}
-      {console.log(messageLogout)}
+      <div className='row justify-content-center'>
+        <div className='col-6'>
+          <form>
+            <div className='form-group'>
+              <label htmlFor='email'>Email address:</label>
+              <input type='email' className='form-control' id='email' />
+            </div>
+            <div className='form-group'>
+              <label htmlFor='pwd'>Password:</label>
+              <input type='password' className='form-control' id='pwd' />
+            </div>
+            <button type='submit' className='btn btn-primary'>Submit</button>
+            <button type='submit' className='btn btn-primary' onClick={authWithGoogle(dispatch)}>Google+</button>
+          </form>
+        </div>
+      </div>
     </>
   )
 }
