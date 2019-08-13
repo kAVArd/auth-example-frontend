@@ -1,11 +1,13 @@
 import axios from 'axios'
 
-export const AUTHWITHGOOGLE = 'AUTHWITHGOOGLE'
 export const LOGOUT = 'LOGOUT'
+export const LOGIN = 'LOGIN'
 
-export const authWithGoogle = (dispatch) => {
-  axios.get(`${process.env.REACT_APP_BACKEND_URL}/login/google`)
-    .then(res => console.log(res))
+export const login = (username, password, dispatch) => {
+  axios.post(`${process.env.REACT_APP_BACKEND_URL}/login`, {
+    username: username,
+    password: password
+  }).then(res => console.log(res))
 }
 
 export const logout = (dispatch) => {

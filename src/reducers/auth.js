@@ -1,17 +1,16 @@
-import { AUTHWITHGOOGLE, LOGOUT } from '../actions/auth'
+import { LOGOUT } from '../actions/auth'
 
 const initState = {
-  messageLogin: '',
   messageLogout: ''
 }
 
 export const auth = (state = initState, action) => {
   switch (action.type) {
-    case AUTHWITHGOOGLE:
-      return {
-        ...state,
-        messageLogin: action.payload
-      }
+    // case LOGIN:
+    //   return {
+    //     ...state,
+    //     messageLogin: action.payload
+    //   }
     case LOGOUT:
       return {
         ...state,

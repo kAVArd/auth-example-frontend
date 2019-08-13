@@ -1,26 +1,34 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { authWithGoogle } from '../actions/auth'
+import { login } from '../actions/auth'
 
 const Login = (props) => {
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
   const dispatch = useDispatch()
+
+  const handleLogin = (e) => {
+    e.preventDefault()
+    login(username, password, dispatch)
+    setUsername('')
+    setPassword('')
+  }
 
   return (
     <>
       <h3 className='header'>Log in page</h3>
       <div className='row justify-content-center'>
         <div className='col-6'>
-          <form>
+          <form onSubmit={(e) => handleLogin(e)}>
             <div className='form-group'>
-              <label htmlFor='email'>Email address:</label>
-              <input type='email' className='form-control' id='email' />
+              <label htmlFor='username'>Username:</label>
+              <input type='username' className='form-control' id='username' value={username} onChange={e => setUsername(e.target.value)} />
             </div>
             <div className='form-group'>
               <label htmlFor='pwd'>Password:</label>
-              <input type='password' className='form-control' id='pwd' />
+              <input type='password' className='form-control' id='pwd' value={password} onChange={e => setPassword(e.target.value)} />
             </div>
             <button type='submit' className='btn btn-primary'>Submit</button>
-            <button type='submit' className='btn btn-primary' onClick={authWithGoogle(dispatch)}>Google+</button>
           </form>
         </div>
       </div>
