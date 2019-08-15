@@ -1,19 +1,26 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { getTodos } from '../actions/todo'
+import { getUsers } from '../actions/user'
 
 const Home = () => {
-  const todos = useSelector(reducers => reducers.todo.todos)
+  const users = useSelector(reducers => reducers.user.users)
   const dispatch = useDispatch()
 
   useEffect(() => {
-    getTodos(dispatch)
+    getUsers(dispatch)
   }, [dispatch])
 
   return (
     <>
-      <h3 className='header'>All todos</h3>
-      {console.log(todos)}
+      <div className='col-4'>
+        <h3 className='header'>All users</h3>
+        <ul className='list-group list-group-flush'>
+          {users && users.map(user => (
+            <li key={user._id} className='list-group-item'>{user.username}</li>
+          ))}
+        </ul>
+      </div>
+      {console.log(users)}
     </>
   )
 }

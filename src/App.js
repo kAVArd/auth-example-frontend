@@ -13,24 +13,14 @@ function App () {
     <Provider store={store}>
       <Router>
         <nav className='navbar navbar-expand-sm'>
-          <Link to='/' className='navbar-brand'><b>Your todos</b></Link>
+          <Link to='/' className='navbar-brand'><b>Authentication example</b></Link>
           <div className='collpase nav-collapse'>
             <ul className='navbar-nav'>
               <li className='nav-item'>
-                <Link to='/today' className='nav-link'>Today</Link>
+                <Link to='/login' className='nav-link'>LogIn</Link>
               </li>
               <li className='nav-item'>
-                <Link to='/celedar' className='nav-link'>Celedar</Link>
-              </li>
-              <li className='nav-item'>
-                <Link to='/about' className='nav-link'>About</Link>
-              </li>
-            </ul>
-          </div>
-          <div className='navbar-collapse collapse w-100 order-3 dual-collapse2'>
-            <ul className='navbar-nav ml-auto'>
-              <li className='nav-item'>
-                <Link to='/login' className='nav-link'>Login</Link>
+                <Link to='/register' className='nav-link'>Register</Link>
               </li>
             </ul>
           </div>

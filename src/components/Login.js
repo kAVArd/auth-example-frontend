@@ -10,13 +10,11 @@ const Login = (props) => {
   const handleLogin = (e) => {
     e.preventDefault()
     login(username, password, dispatch)
-    setUsername('')
-    setPassword('')
   }
 
   return (
     <>
-      <h3 className='header'>Log in page</h3>
+      <h3 className='header'>Login page</h3>
       <div className='row justify-content-center'>
         <div className='col-6'>
           <form onSubmit={(e) => handleLogin(e)}>

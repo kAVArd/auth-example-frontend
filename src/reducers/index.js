@@ -1,8 +1,8 @@
-import { todo } from './todo'
-import { auth } from './auth'
+import { user } from './user'
+import { authentication } from './authentication'
 import { combineReducers } from 'redux'
 
 export default combineReducers({
-  todo: todo,
-  auth: auth
+  user: user,
+  authentication: authentication
 })
