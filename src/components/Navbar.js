@@ -21,7 +21,7 @@ const Navbar = () => {
     return (
       <>
         <li className='nav-item'>
-          <a href='' className='nav-link disable'>Hello, {authUser.username.toUpperCase()}</a>
+          <a href='/' className='nav-link disabled'>Hello, {authUser.username.toUpperCase()}</a>
         </li>
         <li className='nav-item'>
           <Link to='/logout' className='nav-link'>Logout</Link>

@@ -1,25 +1,27 @@
 import React, { useState } from 'react'
+import { register } from '../actions/auth'
 import { useDispatch } from 'react-redux'
-import { login } from '../actions/auth'
 import { withRouter } from 'react-router-dom'
 
-const Login = ({ history }) => {
+const Register = ({ history }) => {
+  const dispatch = useDispatch()
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-  const dispatch = useDispatch()
 
-  const handleLogin = (e) => {
+  const handleRegister = (e) => {
     e.preventDefault()
-    login(username, password, dispatch)
+    register(username, password, dispatch)
     history.push('/')
   }
 
   return (
     <>
-      <h3 className='header'>Login page</h3>
+      <h3 className='header'>Register page</h3>
       <div className='row justify-content-center'>
         <div className='col-6'>
-          <form onSubmit={(e) => handleLogin(e)}>
+          <form onSubmit={(e) => {
+            handleRegister(e)
+          }}>
             <div className='form-group'>
               <label htmlFor='username'>Username:</label>
               <input type='username' className='form-control' id='username' value={username} onChange={e => setUsername(e.target.value)} />
@@ -28,7 +30,7 @@ const Login = ({ history }) => {
               <label htmlFor='pwd'>Password:</label>
               <input type='password' className='form-control' id='pwd' value={password} onChange={e => setPassword(e.target.value)} />
             </div>
-            <button type='submit' className='btn btn-primary'>Login</button>
+            <button type='submit' className='btn btn-primary'>Register</button>
           </form>
         </div>
       </div>
@@ -36,4 +38,4 @@ const Login = ({ history }) => {
   )
 }
 
-export default withRouter(Login)
+export default withRouter(Register)
