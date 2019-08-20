@@ -1,4 +1,4 @@
-import { LOGIN, REGISTER } from '../actions/auth'
+import { LOGIN, REGISTER, LOGOUT } from '../actions/auth'
 
 const initState = {
   authUser: null
@@ -11,6 +11,12 @@ export const authentication = (state = initState, action) => {
       return {
         ...state,
         authUser: action.payload
+      }
+    }
+    case LOGOUT: {
+      return {
+        ...state,
+        authUser: null
       }
     }
     default:
